@@ -1,7 +1,9 @@
-import * as request from "request";
+import axios from "axios";
+
 
 import { AnyDiceError, prettify } from "./error";
 import { random } from "./Util";
+import { error } from "console";
 
 export type AnyDiceDistribution = [number, number][];
 
@@ -21,15 +23,11 @@ export interface AnyDiceResponse {
 
 const anyDiceRequest = (program: string, endpoint: string): Promise<any> => {
     const api = "https://anydice.com";
-    const promise = new Promise<any>((resolve, reject) => {
-        request.post(`${api}${endpoint}`, {
-            form: { program },
-            json: true
-        }, (err, response, body) => {
-            if (err) return reject(err);
-            resolve(body);
-        });
+
+    const promise = axios.post(`${api}${endpoint}`, {  program }).then((response) => response.data).catch(error => {
+        throw error;
     });
+
     return promise;
 }
 

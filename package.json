@@ -27,13 +27,13 @@
   "homepage": "https://github.com/dlom/anydice#readme",
   "devDependencies": {
     "@types/chalk": "^0.4.31",
-    "@types/node": "^8.0.26",
+    "@types/node": "^22.10.2",
     "@types/request": "^2.0.3",
-    "typescript": "^2.4.2"
+    "typescript": "5.7"
   },
   "dependencies": {
-    "chalk": "^2.1.0",
-    "request": "^2.81.0"
+    "axios": "^1.7.9",
+    "chalk": "^2.1.0"
   },
   "engines": {
     "node": ">= 6.0.0"
