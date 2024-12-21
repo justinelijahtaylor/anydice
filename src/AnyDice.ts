@@ -24,7 +24,11 @@ export interface AnyDiceResponse {
 const anyDiceRequest = (program: string, endpoint: string): Promise<any> => {
     const api = "https://anydice.com";
 
-    const promise = axios.post(`${api}${endpoint}`, {  program }).then((response) => response.data).catch(error => {
+    const promise = axios.post(`${api}${endpoint}`, { program }, {
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+        }
+    }).then((response) => response.data).catch(error => {
         throw error;
     });
 
